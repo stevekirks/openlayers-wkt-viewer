@@ -37,7 +37,7 @@ let overLayer = new VectorLayer({
 });
 
 const view = new View({
-  center: fromLonLat([143.05, -27.44]),
+  center: fromLonLat([153.088631, -26.661299]),
   zoom: 13,
 });
 
@@ -91,7 +91,7 @@ const loadWkt = () => {
 
 map.once('postrender', function (event) {
   const txtArea = document.querySelector('#inWkt');
-  txtArea.value = 'POLYGON ((153.070389 -27.418177, 153.071389 -27.419177, 153.072389 -27.417177, 153.070389 -27.416177, 153.070389 -27.418177))';
+  txtArea.value = 'POLYGON ((153.088389 -26.661177, 153.089389 -26.662177, 153.090389 -26.660177, 153.088389 -26.659177, 153.088389 -26.661177))';
   loadWkt();
 });
 

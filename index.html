@@ -9,19 +9,18 @@
     body {
       margin: 0;
       height: 100%;
+      width: 100%;
     }
 
     #map {
       height: 100%;
-      width: auto;
+      margin-left: 300px;
     }
 
     #sidebar {
       height: 100%;
-      width: 300px;
-      position: absolute;
-      left: 0;
-      top: 0;
+      width: 280px;
+      float: left;
       padding: 40px 10px 10px 10px;
       color: rgb(204, 204, 204);
       background-color: black;
@@ -40,12 +39,12 @@
 </head>
 
 <body>
-  <div id="map"></div>
   <div id="sidebar">
     <label>Enter some Well-Known Text</label>
     <textarea id="inWkt" rows="10">Update</textarea>
     <label id="lblInfo"></label>
   </div>
+  <div id="map"></div>
   <script src="./main.js"></script>
 </body>
 
