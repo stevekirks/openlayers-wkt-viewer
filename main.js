@@ -9,7 +9,7 @@ import View from 'ol/View';
 import WKT from 'ol/format/WKT';
 
 const mapboxBaseLayer = new MapboxVector({
-  styleUrl: 'mapbox://styles/mapbox/dark-v10',
+  styleUrl: process.env.MAPBOX_STYLE_URL,
   accessToken: process.env.MAPBOX_ACCESS_TOKEN
 });
 
