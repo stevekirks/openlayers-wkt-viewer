@@ -60,7 +60,7 @@ const loadWkt = () => {
   const wkt = txtArea.value;
 
   if (wkt.length === 0) {
-    lblInfo.innerText = 'Nothing';
+    lblInfo.innerText = 'nothing';
     return;
   }
 
@@ -81,10 +81,10 @@ const loadWkt = () => {
     map.addLayer(overLayer);
     const point = feature.getGeometry();
     view.fit(point, { padding: [10, 10, 10, 10], minResolution: 2, duration: 1000 });
-    lblInfo.innerText = 'Updated';
+    lblInfo.innerText = 'updated';
   }
   catch (x) {
-    lblInfo.innerText = 'Could not parse';
+    lblInfo.innerText = 'could not parse';
     console.error(x);
   }
 }
