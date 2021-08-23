@@ -1,35 +1,39 @@
 import 'ol/ol.css';
-import { fromLonLat } from 'ol/proj';
+import { fromLonLat, toLonLat } from 'ol/proj';
 import Map from 'ol/Map';
 import MapboxVector from 'ol/layer/MapboxVector';
-import { Fill, Stroke, Style } from 'ol/style';
+import { Circle, Fill, Stroke, Style } from 'ol/style';
 import { Vector as VectorLayer } from 'ol/layer';
 import { Vector as VectorSource } from 'ol/source';
 import View from 'ol/View';
 import WKT from 'ol/format/WKT';
 
-const mapboxVector = new MapboxVector({
+const mapboxBaseLayer = new MapboxVector({
   styleUrl: 'mapbox://styles/mapbox/dark-v10',
   accessToken: process.env.MAPBOX_ACCESS_TOKEN
 });
 
-const style = new Style({
+const wktStyle = new Style({
   fill: new Fill({
-    color: 'rgba(25, 191, 69, 0.6)',
+    color: 'rgba(252, 3, 244, 0.2)',
   }),
   stroke: new Stroke({
-    color: '#19bf45',
-    width: 1,
+    color: '#fc03f4',
+    width: 2,
+  }),
+  image: new Circle({
+    radius: 9,
+    fill: new Fill({color: '#fc03f4'}),
   })
 });
 
 const wktFormat = new WKT();
 
-let wktVector = new VectorLayer({
+let overLayer = new VectorLayer({
   source: new VectorSource({
     features: [],
   }),
-  style: style,
+  style: wktStyle,
 });
 
 const view = new View({
@@ -40,14 +44,14 @@ const view = new View({
 const map = new Map({
   target: 'map',
   layers: [
-    mapboxVector, wktVector
+    mapboxBaseLayer, overLayer
   ],
   view: view,
 });
 
 const loadWkt = () => {
 
-  map.removeLayer(wktVector);
+  map.removeLayer(overLayer);
 
   const lblInfo = document.querySelector('#lblInfo');
   lblInfo.innerText = '';
@@ -67,16 +71,16 @@ const loadWkt = () => {
       featureProjection: 'EPSG:3857',
     });
   
-    wktVector = new VectorLayer({
+    overLayer = new VectorLayer({
       source: new VectorSource({
         features: [feature],
       }),
-      style: style,
+      style: wktStyle,
     });
   
-    map.addLayer(wktVector);
+    map.addLayer(overLayer);
     const point = feature.getGeometry();
-    view.fit(point, { padding: [10, 10, 10, 10], minResolution: 50 });
+    view.fit(point, { padding: [10, 10, 10, 10], minResolution: 2, duration: 1000 });
     lblInfo.innerText = 'Updated';
   }
   catch (x) {
@@ -95,3 +99,12 @@ const txtArea = document.querySelector('#inWkt');
 txtArea.addEventListener('input', function () {
   loadWkt();
 }, false);
+
+map.on('singleclick', function (evt) {
+  lblInfo.innerText = '';
+  const coordinate = evt.coordinate;
+  const lngLat = toLonLat(coordinate);
+  const txtArea = document.querySelector('#inWkt');
+  txtArea.value = 'POINT(' + lngLat[0] + ' ' + lngLat[1] + ')';
+  loadWkt();
+});

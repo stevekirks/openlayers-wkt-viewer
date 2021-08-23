@@ -22,18 +22,16 @@
       position: absolute;
       left: 0;
       top: 0;
-      padding-top: 40px;
+      padding: 40px 10px 10px 10px;
       color: rgb(204, 204, 204);
       background-color: black;
     }
 
     #inWkt {
-      margin: 10px;
       padding: 5px;
       width: 260px;
     }
-    #lblInfo {
-      margin: 10px;
+    #sidebar label {
       padding: 5px;
       width: 260px;
       color: rgb(204, 204, 204);
@@ -44,6 +42,7 @@
 <body>
   <div id="map"></div>
   <div id="sidebar">
+    <label>Enter some Well-Known Text</label>
     <textarea id="inWkt" rows="10">Update</textarea>
     <label id="lblInfo"></label>
   </div>

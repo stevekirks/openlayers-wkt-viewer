@@ -1,0 +1,1 @@
+Display Well Known Text (WKT) in a dark themed map using the OpenLayers library.
