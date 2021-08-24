@@ -19,7 +19,8 @@
 
     #sidebar {
       height: 100%;
-      width: 280px;
+      width: 300px;
+      box-sizing: border-box;
       float: left;
       padding: 40px 10px 10px 10px;
       color: rgb(204, 204, 204);
@@ -28,12 +29,17 @@
 
     #inWkt {
       padding: 5px;
-      width: 260px;
+      width: 270px;
     }
     #sidebar label {
       padding: 5px;
-      width: 260px;
+      width: 270px;
       color: rgb(204, 204, 204);
+    }
+    #sidebar small {
+      display: block;
+      padding: 5px;
+      color: rgb(143, 143, 143);
     }
   </style>
 </head>
@@ -43,6 +49,8 @@
     <label>Enter some Well-Known Text</label>
     <textarea id="inWkt" rows="20"></textarea>
     <label id="lblInfo"></label>
+    <br/>
+    <small>coordinates in WGS84 datum (EPSG:4326), projection in Web Mercator (EPSG:3857)</small>
   </div>
   <div id="map"></div>
   <script src="./main.js"></script>
