@@ -1,16 +1,21 @@
 import 'ol/ol.css';
-import { fromLonLat, toLonLat } from 'ol/proj';
-import Map from 'ol/Map';
-import MapboxVector from 'ol/layer/MapboxVector';
-import { Circle, Fill, Stroke, Style } from 'ol/style';
-import { Vector as VectorLayer } from 'ol/layer';
-import { Vector as VectorSource } from 'ol/source';
-import View from 'ol/View';
 import WKT from 'ol/format/WKT';
+import { Vector as VectorLayer } from 'ol/layer';
+import Map from 'ol/Map';
+import { fromLonLat, toLonLat } from 'ol/proj';
+import { Circle, Fill, Stroke, Style } from 'ol/style';
+import { Vector as VectorSource } from 'ol/source';
+import TileLayer from 'ol/layer/Tile';
+import View from 'ol/View';
+import XYZ from 'ol/source/XYZ';
 
-const mapboxBaseLayer = new MapboxVector({
-  styleUrl: process.env.MAPBOX_STYLE_URL,
-  accessToken: process.env.MAPBOX_ACCESS_TOKEN
+let styleUrl = process.env.MAPBOX_STYLE_URL;
+styleUrl = styleUrl.replace('mapbox://styles', 'https://api.mapbox.com/styles/v1');
+const mapboxBaseLayer = new TileLayer({
+  source: new XYZ({
+    url:
+    styleUrl + '/tiles/256/{z}/{x}/{y}@2x' + '?access_token=' + process.env.MAPBOX_ACCESS_TOKEN,
+  }),
 });
 
 const wktStyle = new Style({
