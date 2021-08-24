@@ -80,7 +80,7 @@ const loadWkt = () => {
   
     map.addLayer(overLayer);
     const point = feature.getGeometry();
-    view.fit(point, { padding: [10, 10, 10, 10], minResolution: 2, duration: 1000 });
+    view.fit(point, { padding: [10, 10, 10, 10], minResolution: 2, duration: 700 });
     lblInfo.innerText = 'updated';
   }
   catch (x) {
@@ -100,11 +100,27 @@ txtArea.addEventListener('input', function () {
   loadWkt();
 }, false);
 
+let clickedPoints = [];
 map.on('singleclick', function (evt) {
   lblInfo.innerText = '';
   const coordinate = evt.coordinate;
   const lngLat = toLonLat(coordinate);
+  clickedPoints.push([lngLat[0],lngLat[1]]);
+  let wkt = '';
+  if (clickedPoints.length === 1) {
+    wkt = 'POINT (' + clickedPoints[0][0] + ' ' + clickedPoints[0][1] + ')';
+  } else if (clickedPoints.length === 2) {
+    wkt = 'LINESTRING (' + clickedPoints[0][0] + ' ' + clickedPoints[0][1] + ',' + clickedPoints[1][0] + ' ' + clickedPoints[1][1] + ')';
+  } else {
+    let wktPts = [];
+    for (let i = 0; i < clickedPoints.length; i++) {
+      const pt = clickedPoints[i];
+      wktPts.push(pt[0] + ' ' + pt[1]);
+    }
+    wktPts.push(clickedPoints[0][0] + ' ' + clickedPoints[0][1]);
+    wkt = 'POLYGON ((' + wktPts.join(', ') + '))';
+  }
   const txtArea = document.querySelector('#inWkt');
-  txtArea.value = 'POINT(' + lngLat[0] + ' ' + lngLat[1] + ')';
+  txtArea.value = wkt;
   loadWkt();
 });
