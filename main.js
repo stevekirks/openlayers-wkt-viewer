@@ -43,7 +43,7 @@ let overLayer = new VectorLayer({
 
 const view = new View({
   center: fromLonLat([153.088631, -26.661299]),
-  zoom: 13,
+  zoom: 18,
 });
 
 const map = new Map({
