@@ -86,7 +86,7 @@ const loadWkt = () => {
     map.addLayer(overLayer);
     const point = feature.getGeometry();
     view.fit(point, { padding: [10, 10, 10, 10], minResolution: 2, duration: 700 });
-    lblInfo.innerText = 'updated';
+    lblInfo.innerText = 'WKT loaded';
   }
   catch (x) {
     lblInfo.innerText = 'could not parse';

@@ -25,11 +25,13 @@
       padding: 40px 10px 10px 10px;
       color: rgb(204, 204, 204);
       background-color: black;
+      font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
     }
 
     #inWkt {
       padding: 5px;
       width: 270px;
+      background-color: rgb(41, 41, 41);
     }
     #sidebar label {
       padding: 5px;
@@ -41,6 +43,10 @@
       padding: 5px;
       color: rgb(143, 143, 143);
     }
+    #lblInfo {
+      font-style: italic;
+      font-size: 12px;
+    }
   </style>
 </head>
 
@@ -49,7 +55,7 @@
     <label>Enter some Well-Known Text</label>
     <textarea id="inWkt" rows="20"></textarea>
     <label id="lblInfo"></label>
-    <br/>
+    <br/><br/>
     <small>coordinates in WGS84 datum (EPSG:4326), projection in Web Mercator (EPSG:3857)</small>
   </div>
   <div id="map"></div>
