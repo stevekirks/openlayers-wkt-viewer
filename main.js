@@ -9,12 +9,12 @@ import TileLayer from 'ol/layer/Tile';
 import View from 'ol/View';
 import XYZ from 'ol/source/XYZ';
 
-let styleUrl = process.env.MAPBOX_STYLE_URL;
+let styleUrl = import.meta.env.VITE_MAPBOX_STYLE_URL;
 styleUrl = styleUrl.replace('mapbox://styles', 'https://api.mapbox.com/styles/v1');
 const mapboxBaseLayer = new TileLayer({
   source: new XYZ({
     url:
-    styleUrl + '/tiles/256/{z}/{x}/{y}@2x' + '?access_token=' + process.env.MAPBOX_ACCESS_TOKEN,
+    styleUrl + '/tiles/256/{z}/{x}/{y}@2x' + '?access_token=' + import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
   }),
 });
 
