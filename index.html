@@ -1,1 +1,67 @@
-<!DOCTYPE html><html><head><link rel="stylesheet" href="index.6f7560c1.css"><meta charset="utf-8"><title>WKT</title><style>body,html{margin:0;height:100%;width:100%;background-color:#000}#map{height:100%;margin-left:300px}#sidebar{height:100%;width:300px;box-sizing:border-box;float:left;padding:40px 10px 10px;color:#ccc;font-family:Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif}#inWkt{background-color:#141414}#inWkt,#sidebar label{padding:5px;width:270px;color:#ccc}#sidebar small{display:block;padding:5px;color:#8f8f8f}#lblInfo{font-style:italic;font-size:12px}</style></head><body> <div id="sidebar"> <label>Enter some Well-Known Text</label> <textarea id="inWkt" rows="20"></textarea> <label id="lblInfo"></label> <br><br> <small>coordinates in WGS84 datum (EPSG:4326), projection in Web Mercator (EPSG:3857)</small> </div> <div id="map"></div> <script src="index.32f5e3b9.js"></script> </body></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>WKT</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      background-color: black;
+    }
+
+    #map {
+      height: 100%;
+      margin-left: 300px;
+    }
+
+    #sidebar {
+      height: 100%;
+      width: 300px;
+      box-sizing: border-box;
+      float: left;
+      padding: 40px 10px 10px 10px;
+      color: rgb(204, 204, 204);
+      font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    }
+
+    #inWkt {
+      padding: 5px;
+      width: 270px;
+      color: rgb(204, 204, 204);
+      background-color: rgb(20, 20, 20);
+    }
+    #sidebar label {
+      padding: 5px;
+      width: 270px;
+      color: rgb(204, 204, 204);
+    }
+    #sidebar small {
+      display: block;
+      padding: 5px;
+      color: rgb(143, 143, 143);
+    }
+    #lblInfo {
+      font-style: italic;
+      font-size: 12px;
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-BSAnIxoR.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CSy_vbSQ.css">
+</head>
+
+<body>
+  <div id="sidebar">
+    <label>Enter some Well-Known Text</label>
+    <textarea id="inWkt" rows="20"></textarea>
+    <label id="lblInfo"></label>
+    <br/><br/>
+    <small>coordinates in WGS84 datum (EPSG:4326), projection in Web Mercator (EPSG:3857)</small>
+  </div>
+  <div id="map"></div>
+</body>
+
+</html>
