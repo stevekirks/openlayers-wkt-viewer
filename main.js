@@ -8,6 +8,7 @@ import { Vector as VectorSource } from 'ol/source';
 import TileLayer from 'ol/layer/Tile';
 import View from 'ol/View';
 import XYZ from 'ol/source/XYZ';
+import './transformer';
 
 let styleUrl = import.meta.env.VITE_MAPBOX_STYLE_URL;
 styleUrl = styleUrl.replace('mapbox://styles', 'https://api.mapbox.com/styles/v1');

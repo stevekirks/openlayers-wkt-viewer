@@ -48,16 +48,111 @@
       font-style: italic;
       font-size: 12px;
     }
+
+
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(46, 54, 57); /* Fallback color */
+      background-color: rgba(46, 54, 57,0.4); /* Black w/ opacity */
+      font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: rgb(46, 54, 57);
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    /* The Close Button */
+    .modal-content .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .modal-content .close:hover,
+    .modal-content .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+
+    /* Create three equal columns that floats next to each other */
+    .modal-content .column {
+      float: left;
+      width: 30%;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    /* Clear floats after the columns */
+    .modal-content .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .modal-content #lblModalInfo {
+      color: rgb(204, 204, 204);
+    }
+
+    .transform-textarea {
+      width: 98%;
+      color: rgb(204, 204, 204);
+      background-color: rgb(20, 20, 20);
+    }
+
   </style>
 </head>
 
 <body>
+
+  <div id="transformerModal" class="modal">
+
+    <div class="modal-content">
+      <span class="close-transformer-modal">&times;</span>
+      <label id="lblModalInfo"></label>
+      <div class="row">
+        <div class="column" style="background-color:#aaa;">
+          <label>WKT</label>
+          <textarea id="inTransformWkt" rows="25" class="transform-textarea"></textarea>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+          <label>GeoJSON</label>
+          <textarea id="inTransformGeoJson" rows="25" class="transform-textarea"></textarea>
+        </div>
+        <div class="column" style="background-color:#ccc;">
+          <label>ArcGIS JSON</label>
+          <textarea id="inTransformArcGisJson" rows="25" class="transform-textarea"></textarea>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+
   <div id="sidebar">
     <label>Enter some Well-Known Text</label>
     <textarea id="inWkt" rows="20"></textarea>
     <label id="lblInfo"></label>
     <br/><br/>
     <small>coordinates in WGS84 datum (EPSG:4326), projection in Web Mercator (EPSG:3857)</small>
+    <br/>
+    <button id="openTransforBtn">Open Transform</button>
   </div>
   <div id="map"></div>
   <script type="module" src="./main.js"></script>

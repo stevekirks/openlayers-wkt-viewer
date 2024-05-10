@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@terraformer/arcgis": "^2.1.2",
+    "@terraformer/wkt": "^2.2.0",
     "ol": "^9.1.0"
   },
   "devDependencies": {
